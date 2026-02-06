@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Flame_ continuous.ogg-81dc53d6ae9bced95a4b20dc73397c82.oggstr"
+
+[deps]
+
+source_file="res://assets/Sounds/rocket4flame/Flame_ continuous.ogg"
+dest_files=[ "res://.import/Flame_ continuous.ogg-81dc53d6ae9bced95a4b20dc73397c82.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

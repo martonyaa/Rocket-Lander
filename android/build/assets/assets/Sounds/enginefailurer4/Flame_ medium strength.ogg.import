@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Flame_ medium strength.ogg-97f0fb2b656a81ec224f7dccbfea4872.oggstr"
+
+[deps]
+
+source_file="res://assets/Sounds/enginefailurer4/Flame_ medium strength.ogg"
+dest_files=[ "res://.import/Flame_ medium strength.ogg-97f0fb2b656a81ec224f7dccbfea4872.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

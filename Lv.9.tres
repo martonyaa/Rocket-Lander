@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Level.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+fuel_burn_multiplier = 7.0
+wind_force = 0.0
+thrust_failure = true
+overheat_enabled = true
+overheat_rate = 23.0
+cooldown_rate = 18.0
+max_heat = 100.0
+wind_switch_heights = [  ]
+wind_angles = [  ]
+engine_failure_heights = [ 100.0, 70.0 ]
+engine_failure_enabled = true

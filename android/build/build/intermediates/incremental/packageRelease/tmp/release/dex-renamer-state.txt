@@ -1,0 +1,4 @@
+#Thu Feb 05 21:27:13 EAT 2026
+base.0=/home/martin-griffin/Documents/Rocket-Lander/android/build/build/intermediates/dex/release/mergeDexRelease/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

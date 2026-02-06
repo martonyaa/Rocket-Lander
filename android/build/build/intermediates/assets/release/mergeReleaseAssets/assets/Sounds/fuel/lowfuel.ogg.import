@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lowfuel.ogg-ecbf088367bb4253c6e40f3b3d76546f.oggstr"
+
+[deps]
+
+source_file="res://assets/Sounds/fuel/lowfuel.ogg"
+dest_files=[ "res://.import/lowfuel.ogg-ecbf088367bb4253c6e40f3b3d76546f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

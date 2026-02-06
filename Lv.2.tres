@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Level.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+fuel_burn_multiplier = 3.0
+wind_force = 2.0
+thrust_failure = false
+overheat_enabled = false
+overheat_rate = 0.0
+wind_angles = [ 0.0, 0.0 ]
+wind_switch_heights = [ 0.0, 0.0 ]

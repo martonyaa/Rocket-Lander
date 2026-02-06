@@ -1,0 +1,137 @@
+extends Node
+
+const SAVE_PATH = "user://progress.cfg"
+
+var progress = {}  # level_index : {r1: bool, r2: bool}
+
+var sound_on := true
+
+var controls_layout := {}
+
+func _ready():
+	load_data()
+	apply_sound()
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_FOCUS_IN:
+		apply_sound()
+	elif what == MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+		apply_sound()
+
+func mark_completed(level:int, rocket:int):
+	if not progress.has(level):
+		progress[level] = {"r1": false, "r2": false}
+
+	if rocket == 1:
+		progress[level]["r1"] = true
+	elif rocket == 2:
+		progress[level]["r2"] = true
+
+	save_data()
+
+func is_level_fully_completed(level:int) -> bool:
+	if not progress.has(level):
+		return false
+	return progress[level]["r1"] and progress[level]["r2"]
+
+func save_data():
+	var cfg = ConfigFile.new()
+	cfg.load(SAVE_PATH)
+
+	cfg.set_value("settings", "sound_on", sound_on)
+
+	for level in progress.keys():
+		cfg.set_value("levels", str(level), progress[level])
+	cfg.save(SAVE_PATH)
+
+#func load_data():
+#	var cfg = ConfigFile.new()
+#	if cfg.load(SAVE_PATH) == OK:
+#		var keys = cfg.get_section_keys("levels")
+#		for k in keys:
+#			progress[int(k)] = cfg.get_value("levels", k)
+
+func load_data():
+	var cfg = ConfigFile.new()
+	if cfg.load(SAVE_PATH) == OK:
+		# LOAD LEVEL PROGRESS
+		if cfg.has_section("levels"):
+			var keys = cfg.get_section_keys("levels")
+			for k in keys:
+				progress[int(k)] = cfg.get_value("levels", k)
+
+		# LOAD CONTROLS LAYOUT
+		if cfg.has_section_key("controls", "layout"):
+			controls_layout = cfg.get_value("controls", "layout")
+
+		# LOAD SOUND STATE (🔥 THIS WAS MISSING)
+		if cfg.has_section_key("settings", "sound_on"):
+			sound_on = cfg.get_value("settings", "sound_on")
+		else:
+			sound_on = true  # default for first run
+
+func set_sound(enabled: bool):
+	sound_on = enabled
+	apply_sound()
+	save_data()
+
+#func is_completed(level_index: int, rocket_type: int) -> bool:
+	#if not progress.has(level_index):
+	#	return false
+	#return progress[level_index].has(rocket_type)
+
+func is_completed(level_index: int, rocket_type: int) -> bool:
+	if not progress.has(level_index):
+		return false
+
+	var rocket_key = ""
+	if rocket_type == 0:
+		rocket_key = "r1"
+	else:
+		rocket_key = "r2"
+
+	if not progress[level_index].has(rocket_key):
+		return false
+
+	return progress[level_index][rocket_key]
+
+func is_level_unlocked(level_index: int) -> bool:
+	if level_index == 0:
+		return true  # Level 1 always unlocked
+
+	return is_level_fully_completed(level_index - 1)
+
+func has_seen_tutorial(level:int, rocket:int) -> bool:
+	# Check if tutorial_seen section exists
+	var cfg = ConfigFile.new()
+	if cfg.load(SAVE_PATH) != OK:
+		return false  # no file yet
+	return bool(cfg.get_value("tutorial_seen", str(level) + "_" + str(rocket), false))
+
+func set_seen_tutorial(level:int, rocket:int):
+	var cfg = ConfigFile.new()
+	cfg.load(SAVE_PATH)  # load existing data if any
+	cfg.set_value("tutorial_seen", str(level) + "_" + str(rocket), true)
+	cfg.save(SAVE_PATH)
+
+#func set_controls_layout(data: Dictionary) -> void:
+	#controls_layout = data
+
+func set_controls_layout(data: Dictionary) -> void:
+	controls_layout = data
+
+	var cfg = ConfigFile.new()
+	cfg.load(SAVE_PATH)
+
+	cfg.set_value("controls", "layout", controls_layout)
+	cfg.save(SAVE_PATH)
+
+func get_controls_layout() -> Dictionary:
+	return controls_layout
+
+func apply_sound():
+	AudioServer.set_bus_mute(
+		AudioServer.get_bus_index("Master"),
+		not sound_on
+	)
+

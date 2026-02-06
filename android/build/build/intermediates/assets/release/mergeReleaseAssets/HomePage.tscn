@@ -1,0 +1,962 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://HomePage.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/Level1.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/Level9.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/Level8.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/Level5.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/Level7.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/Level2.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/Level4.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/Level6.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/Level3.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/Level10.png" type="Texture" id=11]
+[ext_resource path="res://LevelBox.gd" type="Script" id=12]
+[ext_resource path="res://assets/ui/Rocket1.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/Rocket2.png" type="Texture" id=14]
+[ext_resource path="res://assets/ui/Home.png" type="Texture" id=15]
+[ext_resource path="res://assets/ui/Home2.png" type="Texture" id=16]
+[ext_resource path="res://HomeButton.gd" type="Script" id=17]
+[ext_resource path="res://assets/ui/CompletionIcon.png" type="Texture" id=18]
+[ext_resource path="res://assets/ui/Menu2.png" type="Texture" id=19]
+[ext_resource path="res://assets/ui/Menu.png" type="Texture" id=20]
+[ext_resource path="res://HomeMenu.tscn" type="PackedScene" id=21]
+[ext_resource path="res://MenuButton2.gd" type="Script" id=22]
+[ext_resource path="res://assets/ui/Locked.png" type="Texture" id=23]
+[ext_resource path="res://LockIcon.gd" type="Script" id=24]
+[ext_resource path="res://CompletionIcon.gd" type="Script" id=25]
+[ext_resource path="res://Button.gd" type="Script" id=26]
+
+[node name="HomePage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1080, 1920 )
+mouse_filter = 2
+color = Color( 0.172549, 0.188235, 0.2, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -152.0
+margin_top = 70.0
+margin_right = 152.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 250, 250 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 320.0
+margin_bottom = 250.0
+mouse_filter = 2
+custom_constants/separation = 20
+
+[node name="HomeButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+pause_mode = 2
+margin_right = 150.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 150, 150 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+expand = true
+script = ExtResource( 17 )
+
+[node name="MenuButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+pause_mode = 2
+margin_left = 170.0
+margin_right = 320.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 150, 150 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 19 )
+expand = true
+script = ExtResource( 22 )
+
+[node name="HomeMenu" parent="MarginContainer/HBoxContainer/MenuButton" instance=ExtResource( 21 )]
+margin_left = -954.0
+margin_top = -16.0
+margin_right = -914.0
+margin_bottom = 24.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -556.0
+margin_right = 4096.0
+margin_bottom = 556.0
+size_flags_vertical = 0
+scroll_vertical_enabled = false
+scroll_deadzone = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+margin_right = 10180.0
+margin_bottom = 1100.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 20
+
+[node name="Lv1" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_right = 1000.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv1"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv1"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+focus_mode = 0
+mouse_filter = 1
+flat = true
+script = ExtResource( 26 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv1"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv1/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+action_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv1/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv1/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+action_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv1/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv1"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv1/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -58.0
+margin_right = 5.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 140, 140 )
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+script = ExtResource( 24 )
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv1/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+rect_min_size = Vector2( 150, 150 )
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+script = ExtResource( 25 )
+
+[node name="Lv2" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 1020.0
+margin_right = 2020.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv2"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv2"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv2"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv2/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv2/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv2/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv2/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 300 )
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv2"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv2/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 140, 0 )
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv2/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Lv3" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 2040.0
+margin_right = 3040.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv3"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 10 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv3"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv3"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv3/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 100, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv3/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 300 )
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv3/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 100, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv3/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 300 )
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv3"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv3/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv3/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="Lv4" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 3060.0
+margin_right = 4060.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv4"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv4"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv4"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv4/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv4/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 100, 300 )
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv4/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv4/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv4"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv4/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv4/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Lv5" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 4080.0
+margin_right = 5080.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 4
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv5"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv5"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv5"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv5/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv5/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv5/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv5/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv5"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv5/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv5/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="Lv6" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 5100.0
+margin_right = 6100.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 5
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv6"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv6"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv6"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv6/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv6/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv6/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv6/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv6"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv6/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv6/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Lv7" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 6120.0
+margin_right = 7120.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 6
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv7"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv7"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv7"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv7/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv7/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv7/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv7/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv7"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv7/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv7/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Lv8" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 7140.0
+margin_right = 8140.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 7
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv8"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv8"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv8"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv8/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv8/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv8/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv8/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv8"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv8/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv8/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Lv9" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 8160.0
+margin_right = 9160.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 8
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv9"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv9"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv9"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv9/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv9/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv9/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv9/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv9"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv9/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv9/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Lv10" type="MarginContainer" parent="ScrollContainer/HBoxContainer" groups=["levels"]]
+margin_left = 9180.0
+margin_right = 10180.0
+margin_bottom = 1100.0
+rect_min_size = Vector2( 1000, 1100 )
+mouse_filter = 1
+script = ExtResource( 12 )
+level_index = 9
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv10"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Button" type="Button" parent="ScrollContainer/HBoxContainer/Lv10"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/HBoxContainer/Lv10"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+custom_constants/separation = 5
+
+[node name="R3" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv10/HBoxContainer"]
+margin_right = 497.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv10/HBoxContainer/R3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+expand = true
+
+[node name="R4" type="TextureButton" parent="ScrollContainer/HBoxContainer/Lv10/HBoxContainer"]
+margin_left = 502.0
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv10/HBoxContainer/R4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Control" parent="ScrollContainer/HBoxContainer/Lv10"]
+margin_right = 1000.0
+margin_bottom = 1100.0
+mouse_filter = 2
+
+[node name="LockIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv10/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = 70.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+
+[node name="CompletionIcon" type="TextureRect" parent="ScrollContainer/HBoxContainer/Lv10/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/HomeButton" to="." method="_on_HomeButton_pressed"]

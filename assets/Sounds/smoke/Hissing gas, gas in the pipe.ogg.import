@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hissing gas, gas in the pipe.ogg-fdb2d362249b72691cd3c1cb55337e58.oggstr"
+
+[deps]
+
+source_file="res://assets/Sounds/smoke/Hissing gas, gas in the pipe.ogg"
+dest_files=[ "res://.import/Hissing gas, gas in the pipe.ogg-fdb2d362249b72691cd3c1cb55337e58.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

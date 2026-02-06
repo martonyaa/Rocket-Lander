@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GroundFire.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.689189, 0.959459 )
+colors = PoolColorArray( 0.823529, 0.34902, 0.0588235, 1, 0.337255, 0.0352941, 0.0352941, 1, 0.215686, 0.0941176, 0.0941176, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+gravity = Vector3( 0, -0.3, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="CapsuleMesh" id=3]
+material = SubResource( 2 )
+radius = 2.975
+radial_segments = 200
+
+[node name="GroundFire" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="FireParticles" type="Particles" parent="."]
+transform = Transform( -0.993056, 0.0314326, -0.113369, -0.0351034, -0.998917, 0.0305295, -0.112287, 0.0342972, 0.993084, 0, -0.948494, -0.0404358 )
+emitting = false
+amount = 200
+lifetime = 5.38
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 3 )

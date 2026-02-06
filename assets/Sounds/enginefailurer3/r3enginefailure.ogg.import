@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/r3enginefailure.ogg-fafcb8f46b616723da7d0e62fad7c618.oggstr"
+
+[deps]
+
+source_file="res://assets/Sounds/enginefailurer3/r3enginefailure.ogg"
+dest_files=[ "res://.import/r3enginefailure.ogg-fafcb8f46b616723da7d0e62fad7c618.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

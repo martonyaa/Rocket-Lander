@@ -1,0 +1,492 @@
+[gd_scene load_steps=63 format=2]
+
+[ext_resource path="res://ArmPad.tscn" type="PackedScene" id=1]
+[ext_resource path="res://rocket3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MainScene.gd" type="Script" id=3]
+[ext_resource path="res://Environment1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Incomplete_ArmPad.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LandingPad.tscn" type="PackedScene" id=6]
+[ext_resource path="res://rocket4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Camera_Low.gd" type="Script" id=8]
+[ext_resource path="res://Camera_High.gd" type="Script" id=9]
+[ext_resource path="res://LevelController.gd" type="Script" id=10]
+[ext_resource path="res://FuelBar.gd" type="Script" id=11]
+[ext_resource path="res://GroundKillZone.gd" type="Script" id=12]
+[ext_resource path="res://GroundFire.tscn" type="PackedScene" id=13]
+[ext_resource path="res://WindMeter.gd" type="Script" id=14]
+[ext_resource path="res://HeatMeter.gd" type="Script" id=15]
+[ext_resource path="res://arrow_up.png" type="Texture" id=16]
+[ext_resource path="res://Lv.1.tres" type="Resource" id=17]
+[ext_resource path="res://Lv.2.tres" type="Resource" id=18]
+[ext_resource path="res://Lv.3.tres" type="Resource" id=19]
+[ext_resource path="res://Lv.4.tres" type="Resource" id=20]
+[ext_resource path="res://Lv.5.tres" type="Resource" id=21]
+[ext_resource path="res://Lv.6.tres" type="Resource" id=22]
+[ext_resource path="res://Lv.7.tres" type="Resource" id=23]
+[ext_resource path="res://Lv.8.tres" type="Resource" id=24]
+[ext_resource path="res://Lv.9.tres" type="Resource" id=25]
+[ext_resource path="res://Lv.10.tres" type="Resource" id=26]
+[ext_resource path="res://LeftBoundary.gd" type="Script" id=27]
+[ext_resource path="res://RightBoundary.gd" type="Script" id=28]
+[ext_resource path="res://BackBoundary.gd" type="Script" id=29]
+[ext_resource path="res://assets/ui/base.png" type="Texture" id=30]
+[ext_resource path="res://assets/ui/knob.png" type="Texture" id=31]
+[ext_resource path="res://JoystickBase.gd" type="Script" id=32]
+[ext_resource path="res://UI_Root.gd" type="Script" id=38]
+[ext_resource path="res://assets/ui/Menu2.png" type="Texture" id=39]
+[ext_resource path="res://assets/ui/Menu.png" type="Texture" id=40]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=41]
+[ext_resource path="res://MenuButton.gd" type="Script" id=42]
+[ext_resource path="res://assets/Sounds/fuel/lowfuel.ogg" type="AudioStream" id=43]
+[ext_resource path="res://TutorialOverlay.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Roboto/static/Roboto-Black.ttf" type="DynamicFontData" id=45]
+[ext_resource path="res://Roboto/static/Roboto_Condensed-Black.ttf" type="DynamicFontData" id=46]
+[ext_resource path="res://assets/ui/Done.png" type="Texture" id=47]
+[ext_resource path="res://assets/ui/Done2.png" type="Texture" id=49]
+
+[sub_resource type="StyleBoxFlat" id=2]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.0392157, 0.0352941, 0.0352941, 1 )
+
+[sub_resource type="ViewportTexture" id=7]
+viewport_path = NodePath("HighCamViewport")
+
+[sub_resource type="PlaneMesh" id=3]
+size = Vector2( 10000, 10000 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 0.0392157, 0.168627, 0.560784, 1 )
+roughness = 0.22
+refraction_enabled = true
+refraction_scale = 0.02
+refraction_texture_channel = 0
+uv1_offset = Vector3( 10, 10, 5 )
+
+[sub_resource type="ProceduralSky" id=5]
+sky_energy = 0.3
+sun_latitude = 38.53
+sun_energy = 0.2
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 5 )
+fog_color = Color( 0.815686, 0.890196, 0.968627, 1 )
+fog_depth_begin = 80.0
+fog_depth_end = 200.0
+
+[sub_resource type="DynamicFont" id=19]
+size = 64
+font_data = ExtResource( 45 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.992157, 0.662745, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.854902, 0.0980392, 0.0196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.109804, 0.419608, 0.686275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+
+[sub_resource type="DynamicFont" id=20]
+size = 40
+font_data = ExtResource( 46 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.741176, 0.184314, 0.054902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 1, 1, 1.30959 )
+
+[sub_resource type="BoxShape" id=17]
+
+[sub_resource type="BoxShape" id=18]
+
+[node name="MainScene" type="Spatial"]
+script = ExtResource( 3 )
+Rocket1Scene = ExtResource( 2 )
+Rocket2Scene = ExtResource( 7 )
+Rocket3Spawn = Vector3( 0, 200, 0 )
+Rocket4Spawn = Vector3( 0, 200, 0 )
+
+[node name="Camera_Low" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 17, 25 )
+current = true
+fov = 101.7
+near = 0.06
+far = 7056.7
+script = ExtResource( 8 )
+
+[node name="HighCamViewport" type="Viewport" parent="."]
+size = Vector2( 400, 250 )
+
+[node name="Camera_High" type="Camera" parent="HighCamViewport"]
+transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 40, 20 )
+fov = 149.4
+near = 0.85
+far = 8192.0
+script = ExtResource( 9 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -624.0
+margin_bottom = -350.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="HighCamOverlay" type="TextureRect" parent="UI/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 2.0
+texture = SubResource( 7 )
+stretch_mode = 4
+flip_v = true
+
+[node name="ArmPad" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, -7.61702e-12, 0, 5.38876e-11, 1, 0, 0, 0, 1, 1.11759e-08, -1.06074, 0.212305 )
+
+[node name="Skeleton" parent="ArmPad/Arm_L/Armature" index="0"]
+bones/0/bound_children = [  ]
+
+[node name="Skeleton2" parent="ArmPad/Arm_R/Armature001" index="0"]
+bones/0/bound_children = [  ]
+
+[node name="Environment1" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.217367, -0.00266527, 0.976086, 0.0171071, 0.999853, -0.00107945, -0.97594, 0.0169327, 0.21738, 35.8116, -6.96375, -31.4318 )
+
+[node name="Incomplete_ArmPad" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6764, -0.16334, -31.0751 )
+
+[node name="LandingPad" parent="." instance=ExtResource( 6 )]
+transform = Transform( 3.6999, 0, 0, 0, 1, 0, 0, 0, 4.50745, 65.554, -5.827, -55.46 )
+
+[node name="GroundExtension" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="UI2" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+
+[node name="Control" type="Control" parent="UI2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI2/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 24.0
+margin_right = -24.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI2/Control/MarginContainer"]
+margin_right = 1056.0
+margin_bottom = 1896.0
+mouse_filter = 2
+custom_constants/separation = 100
+
+[node name="Control5" type="Control" parent="UI2/Control/MarginContainer/VBoxContainer"]
+margin_right = 1056.0
+mouse_filter = 2
+
+[node name="MenuButton" type="TextureButton" parent="UI2/Control/MarginContainer/VBoxContainer/Control5"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -300.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+texture_normal = ExtResource( 40 )
+texture_pressed = ExtResource( 39 )
+expand = true
+script = ExtResource( 42 )
+
+[node name="Control" type="Control" parent="UI2/Control/MarginContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 1056.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_vertical = 4
+
+[node name="EngineStatusLabel" type="Label" parent="UI2/Control/MarginContainer/VBoxContainer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -750.0
+margin_top = -10.0
+margin_right = 750.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 19 )
+custom_styles/normal = SubResource( 13 )
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Control2" type="Control" parent="UI2/Control/MarginContainer/VBoxContainer"]
+margin_top = 200.0
+margin_right = 1056.0
+margin_bottom = 200.0
+mouse_filter = 2
+size_flags_vertical = 4
+
+[node name="FuelBar" type="ProgressBar" parent="UI2/Control/MarginContainer/VBoxContainer/Control2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -650.0
+margin_top = -20.0
+margin_right = 650.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 70, 10 )
+mouse_filter = 2
+size_flags_stretch_ratio = 3.0
+custom_styles/fg = SubResource( 8 )
+custom_styles/bg = SubResource( 9 )
+percent_visible = false
+script = ExtResource( 11 )
+
+[node name="FuelAlertSound" type="AudioStreamPlayer" parent="UI2/Control/MarginContainer/VBoxContainer/Control2/FuelBar"]
+stream = ExtResource( 43 )
+volume_db = 1.0
+
+[node name="Control3" type="Control" parent="UI2/Control/MarginContainer/VBoxContainer"]
+margin_top = 300.0
+margin_right = 1056.0
+margin_bottom = 300.0
+mouse_filter = 2
+size_flags_vertical = 4
+
+[node name="WindMeter" type="ProgressBar" parent="UI2/Control/MarginContainer/VBoxContainer/Control3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -650.0
+margin_top = -20.0
+margin_right = 650.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 10 )
+mouse_filter = 2
+custom_styles/fg = SubResource( 11 )
+custom_styles/bg = SubResource( 12 )
+max_value = 2000.0
+percent_visible = false
+script = ExtResource( 14 )
+
+[node name="WindLabel" type="Label" parent="UI2/Control/MarginContainer/VBoxContainer/Control3/WindMeter"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.05
+margin_top = -24.0
+margin_right = 70.05
+margin_bottom = 24.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 20 )
+align = 1
+valign = 1
+
+[node name="WindArrow" type="TextureRect" parent="UI2/Control/MarginContainer/VBoxContainer/Control3/WindMeter"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 1, 0 )
+texture = ExtResource( 16 )
+expand = true
+
+[node name="Control4" type="Control" parent="UI2/Control/MarginContainer/VBoxContainer"]
+margin_top = 400.0
+margin_right = 1056.0
+margin_bottom = 400.0
+size_flags_vertical = 4
+
+[node name="HeatMeter" type="ProgressBar" parent="UI2/Control/MarginContainer/VBoxContainer/Control4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -20.0
+margin_right = 600.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 70, 10 )
+custom_styles/fg = SubResource( 14 )
+custom_styles/bg = SubResource( 15 )
+percent_visible = false
+script = ExtResource( 15 )
+
+[node name="UI_Root" type="Control" parent="UI2"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 38 )
+
+[node name="JoystickBase" type="TextureButton" parent="UI2/UI_Root" groups=["control_buttons"]]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -200.0
+margin_right = 100.0
+rect_min_size = Vector2( 200, 200 )
+texture_normal = ExtResource( 30 )
+expand = true
+script = ExtResource( 32 )
+
+[node name="JoystickKnob" type="TextureRect" parent="UI2/UI_Root/JoystickBase" groups=["control_buttons"]]
+pause_mode = 2
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+mouse_filter = 2
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 1
+
+[node name="DoneButton" type="TextureButton" parent="UI2/UI_Root"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -450.0
+margin_top = -225.0
+margin_bottom = 225.0
+texture_normal = ExtResource( 47 )
+texture_pressed = ExtResource( 49 )
+expand = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI2/UI_Root"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 16.0
+margin_right = -30.0
+margin_bottom = -16.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI2/UI_Root/MarginContainer"]
+margin_right = 1020.0
+margin_bottom = 1888.0
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="UI2/UI_Root/MarginContainer/VBoxContainer"]
+margin_right = 1020.0
+margin_bottom = 1884.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI2/UI_Root/MarginContainer/VBoxContainer"]
+margin_top = 1888.0
+margin_right = 1020.0
+margin_bottom = 1888.0
+
+[node name="LeftPanel" type="HBoxContainer" parent="UI2/UI_Root/MarginContainer/VBoxContainer/HBoxContainer"]
+size_flags_horizontal = 5
+size_flags_vertical = 4
+custom_constants/separation = 40
+
+[node name="Control" type="Control" parent="UI2/UI_Root/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 4.0
+margin_right = 1016.0
+size_flags_horizontal = 3
+
+[node name="RightPanel" type="VBoxContainer" parent="UI2/UI_Root/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 1020.0
+margin_right = 1020.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+custom_constants/separation = 80
+
+[node name="PauseMenu" parent="UI2" instance=ExtResource( 41 )]
+
+[node name="TutorialOverlay" parent="UI2" instance=ExtResource( 44 )]
+visible = false
+
+[node name="GroundKillZone" type="Area" parent="." groups=["ground_kill"]]
+transform = Transform( 3.42655, 0, 0, 0, 1, 0, 0, 0, 2.91744, 0, 0, 0 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="GroundKillZone"]
+transform = Transform( 28.7951, 0, 0, 0, 0.999819, -3.7611, 0, 0.0065264, 67.6952, -2.53844, -6.63835, -22.4408 )
+shape = SubResource( 10 )
+
+[node name="GroundFire" parent="." instance=ExtResource( 13 )]
+
+[node name="LevelController" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6905, 93.3986, -38.7286 )
+script = ExtResource( 10 )
+levels = [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
+
+[node name="LeftBoundary" type="Area" parent="." groups=["out_of_bounds"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1876, 5.27425, 0 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 27 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LeftBoundary"]
+transform = Transform( 0.407087, 0, -10.949, 0, 241.64, 0, 0.164903, 0, 151.098, -31.8367, -12.8672, -34.5285 )
+shape = SubResource( 16 )
+
+[node name="RightBoundary" type="Area" parent="." groups=["out_of_bounds"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.65759, 0, 0, 0 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 28 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RightBoundary"]
+transform = Transform( 0.365661, 0, 0, 0, 234.701, 0, 0, 0, 112.914, 144.038, 22.5559, -83.0232 )
+shape = SubResource( 17 )
+
+[node name="BackBoundary" type="Area" parent="." groups=["out_of bounds"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 29 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BackBoundary"]
+transform = Transform( 158.055, 0, 0, 0, 136.158, 0.157374, 0, -131.753, 0.162636, 58.9515, 2.67877, -87.3629 )
+shape = SubResource( 18 )
+
+[connection signal="body_entered" from="GroundKillZone" to="GroundKillZone" method="_on_GroundKillZone_body_entered"]
+[connection signal="body_entered" from="LeftBoundary" to="." method="_on_LeftBoundary_body_entered"]
+[connection signal="body_entered" from="RightBoundary" to="." method="_on_RightBoundary_body_entered"]
+[connection signal="body_entered" from="BackBoundary" to="." method="_on_BackBoundary_body_entered"]
+
+[editable path="ArmPad"]
